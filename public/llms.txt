@@ -1,0 +1,53 @@
+# הרב דוד בטאט — Generative Engine Optimization Map
+
+> A שירותים דתיים והדרכה business.
+
+---
+
+## Pages
+
+### Home
+https://-b75938b0.zappy5.app
+
+### Services
+https://-b75938b0.zappy5.app/services
+
+### Approach
+https://-b75938b0.zappy5.app/approach
+
+### Contact
+https://-b75938b0.zappy5.app/contact
+
+## Legal & Policy
+
+### Privacy Policy
+https://-b75938b0.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://-b75938b0.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://-b75938b0.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About הרב דוד בטאט
+הרב דוד בטאט is a business in the שירותים דתיים והדרכה industry.
+
+## Target Audience
+חתנים לפני חתונה
+
+## Industry
+שירותים דתיים והדרכה
+
+---
+
+# Additional Resources
+
+- **Sitemap**: https://-b75938b0.zappy5.app/sitemap.xml
+- **Robots.txt**: https://-b75938b0.zappy5.app/robots.txt

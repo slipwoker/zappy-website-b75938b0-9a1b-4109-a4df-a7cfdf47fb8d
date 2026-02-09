@@ -1,0 +1,552 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>גישה - הרב דוד בטאט</title>
+  <meta name="description" content="Approach - הרב דוד בטאט provides professional שירותים דתיים והדרכה services. Specializing in הדרכת חתנים לפני חתונה.">
+  <meta name="keywords" content="הדרכת חתנים לפני חתונה, הרב דוד בטאט הדרכת חתנים, הדרכה מקצועית לחתנים בישראל, שיעורים לחתנים לפני נישואין">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="גישה - הרב דוד בטאט">
+  <meta property="og:description" content="Approach - הרב דוד בטאט provides professional שירותים דתיים והדרכה services. Specializing in הדרכת חתנים לפני חתונה.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="גישה - הרב דוד בטאט">
+  <meta name="twitter:description" content="Approach - הרב דוד בטאט provides professional שירותים דתיים והדרכה services. Specializing in הדרכת חתנים לפני חתונה.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'b75938b0-9a1b-4109-a4df-a7cfdf47fb8d',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background: transparent !important; border: none !important; cursor: pointer !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+</head>
+<body>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+  
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/business-logo.webp" alt="הרב דוד בטאט" class="logo" />
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu"><li><a href="/services">שירותים</a></li><li><a href="/approach">גישה</a></li></ul>
+    
+    <div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+  
+  <main>
+    <section class="approach-page-intro-section" data-layout-spec="Approach-page-intro">
+  <div class="approach-page-intro-container">
+    <div class="approach-page-intro-content">
+      <h1>הגישה שלנו</h1>
+      <h3>הדרכה שקטה, מבנה ברור</h3>
+      <p>אנחנו מאמינים שהכנה לחתונה צריכה להיות חוויה של כבוד, דיסקרטיות ובטחון. הפילוסופיה שלנו מבוססת על הבנה עמוקה שכל חתן זקוק למרחב בטוח, להדרכה ברורה ולתשובות מדויקות. אנחנו מספקים מבנה מסודר, קצב נוח ותמיכה אמיתית לאורך כל הדרך – כדי שתגיע לחופה עם ראש מורם ובטחון מלא.</p>
+    </div>
+    <div class="approach-page-intro-imagery">
+      <img data-placeholder="approach-page-intro-image-1" data-context="A professional, elegant image for a religious services business: a serene study room with warm lighting, an open book on a wooden desk, soft focus background showing bookshelves, conveying calm guidance and preparation for grooms before their wedding" width="600" height="700" src="/assets/site-approach-page-intro-image-1.webp" alt="חדר לימוד שקט עם ספרים ותאורה חמה המסמלים הדרכה והכנה">
+    </div>
+  </div>
+  <div class="approach-page-intro-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="approach-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--bg-light);stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:#0F1115;stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,120 L0,50 Q150,45 300,52 T600,48 Q750,52 900,45 T1200,50 L1200,120 Z" fill="url(#approach-gradient)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="approach-values-section" data-layout-spec="Approach-values">
+  <div class="approach-values-container">
+    <div class="approach-values-intro">
+      <h2>עקרונות שמנחים כל פרט</h2>
+      <p>העבודה שלי מבוססת על דיסקרטיות מוחלטת ודיוק מקצועי. כל פגישה מותאמת אישית, עם דגש על כבוד, בהירות והנחיה עדינה שמאפשרת לכל חתן להתכונן בביטחון ובשלווה.</p>
+    </div>
+    
+    <div class="approach-values-grid">
+      <article class="approach-values-card">
+        <div class="approach-values-card-highlight"></div>
+        <h3>דיסקרטיות מוחלטת</h3>
+        <p>כל פגישה מתקיימת בסביבה פרטית ומוגנת. אני שומר על סודיות מלאה ומכבד את המרחב האישי של כל חתן, כך שתוכל להתמקד בלמידה ובהכנה ללא חששות.</p>
+      </article>
+      
+      <article class="approach-values-card">
+        <div class="approach-values-card-highlight"></div>
+        <h3>בהירות והנחיה מדויקת</h3>
+        <p>ההדרכה שלי מבוססת על הסברים ברורים ומעשיים, ללא סיבוכים מיותרים. אני מוביל בצורה מסודרת ומדויקת, כך שכל נושא יהיה מובן ונגיש לחלוטין.</p>
+      </article>
+      
+      <article class="approach-values-card">
+        <div class="approach-values-card-highlight"></div>
+        <h3>מנהיגות מכבדת</h3>
+        <p>אני רואה בכל חתן שותף בתהליך. ההדרכה מתבצעת בכבוד מלא, תוך הקשבה והתאמה אישית לצרכים ולקצב של כל אחד, כך שהחוויה תהיה חיובית ומעצימה.</p>
+      </article>
+    </div>
+  </div>
+  
+  <div class="approach-values-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="grain-values">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"></feTurbulence>
+          <feColorMatrix in="noise" type="saturate" values="0"></feColorMatrix>
+          <feBlend in="SourceGraphic" in2="noise" mode="multiply"></feBlend>
+        </filter>
+      </defs>
+      <path d="M0,100 L0,65 Q100,58 200,65 T400,62 Q500,68 600,60 T800,65 Q900,58 1000,62 T1200,65 L1200,100 Z" fill="var(--bg-dark)" filter="url(#grain-values)" opacity="0.95"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="approach-success-stories-section" data-layout-spec="Approach-success-stories">
+  <div class="approach-success-stories-container">
+    <div class="approach-success-stories-header">
+      <h2>ניצחונות שקטים</h2>
+      <p>תוצאות שמוצגות כשיפורים רגועים, לא טענות דרמטיות. כל חתן מגיע עם סיפור משלו, ויוצא עם בטחון שקט וברור.</p>
+    </div>
+
+    <div class="approach-success-stories-story approach-success-stories-story-1">
+      <div class="approach-success-stories-story-image">
+        <img data-placeholder="approach-success-stories-image-1" data-context="Monochrome documentary-style photograph showing hands holding handwritten notes or a small prayer book, shot in soft natural light with shallow depth of field, conveying preparation and quiet contemplation for a Jewish wedding ceremony" width="600" height="400" src="/assets/site-approach-success-stories-image-1.webp" alt="ידיים מחזיקות פתקים והכנה לחתונה">
+      </div>
+      <div class="approach-success-stories-story-content">
+        <h3>בהירות ברגע האחרון</h3>
+        <p>חתן שהגיע שבועיים לפני החופה עם לחץ גבוה ותקשורת משפחתית מורכבת. ההדרכה התמקדה בהבנת הנושאים המרכזיים ובמתן כלים פשוטים לניהול שיחות רגישות.</p>
+        <p>התוצאה: הוא עמד תחת החופה בשלווה, עם תחושת מוכנות פנימית. המשפחה דיווחה על אווירה רגועה וחמה יותר בימים שלפני האירוע.</p>
+      </div>
+    </div>
+
+    <div class="approach-success-stories-story approach-success-stories-story-2">
+      <div class="approach-success-stories-story-content">
+        <h3>הכנה מובנית, ביצוע בטוח</h3>
+        <p>חתן שביקש להיות מוכן לחלוטין לכל היבט של החתונה. דרך הדרכה מסודרת ומדורגת, עברנו על כל שלב בתהליך - מההלכות הבסיסיות ועד לניהול רגעים לא צפויים.</p>
+        <p>ביום החתונה עצמו, הוא הוביל את הטקס בביטחון מלא. חברים ובני משפחה ציינו את הרוגע והנוכחות שלו, והוא דיווח על תחושת שליטה והנאה אמיתית מהחוויה.</p>
+      </div>
+      <div class="approach-success-stories-story-image">
+        <img data-placeholder="approach-success-stories-image-2" data-context="Monochrome documentary-style close-up photograph of ceremonial Jewish wedding objects like a kiddush cup or tallit detail, shot with dramatic side lighting and soft shadows, conveying tradition and careful preparation" width="600" height="400" src="/assets/site-approach-success-stories-image-2.webp" alt="פרטים של חפצי טקס לחתונה יהודית">
+      </div>
+    </div>
+  </div>
+
+  <div class="approach-success-stories-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldStrokeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FFD166;stop-opacity:0.3"></stop>
+          <stop offset="50%" style="stop-color:#FFD166;stop-opacity:0.8"></stop>
+          <stop offset="100%" style="stop-color:#FFD166;stop-opacity:0.3"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,100 L0,45 Q100,38 200,45 T400,42 Q500,45 600,38 T800,45 Q900,42 1000,45 T1200,42 L1200,100 Z" fill="#07090D"></path>
+      <path d="M0,45 Q100,38 200,45 T400,42 Q500,45 600,38 T800,45 Q900,42 1000,45 T1200,42" stroke="url(#goldStrokeGradient)" stroke-width="2" fill="none"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="approach-team-section" data-layout-spec="Approach-Team">
+  <div class="approach-team-container">
+    <div class="approach-team-header">
+      <h2>עם מי תדבר</h2>
+      <p>שיחה רגועה ומכבדת, בסודיות מלאה ובאווירה תומכת. כל מה שנאמר נשאר בינינו.</p>
+    </div>
+
+    <div class="approach-team-cards-wrapper">
+      <div class="approach-team-main-card">
+        <div class="approach-team-image-wrapper">
+          <img data-placeholder="approach-team-image-1" data-context="Monochrome professional portrait of a religious Jewish rabbi in his 40s-50s, wearing traditional attire, shot in contemplative black and white style with soft lighting, conveying wisdom and approachability for religious counseling services" width="400" height="500" src="/assets/site-approach-team-image-1.webp" alt="הרב דוד בטאט - מדריך חתנים">
+        </div>
+        <div class="approach-team-content">
+          <h3>הרב דוד בטאט</h3>
+          <p class="approach-team-role">מדריך חתנים ויועץ רוחני</p>
+          <p class="approach-team-bio">עם ניסיון רב בהדרכת זוגות צעירים לפני החתונה, הרב בטאט מתמחה בליווי אישי ומותאם לכל חתן. הגישה שלו משלבת חום אנושי עם עומק הלכתי, תוך יצירת מרחב בטוח לשאלות ולדיון פתוח.</p>
+        </div>
+      </div>
+
+      <div class="approach-team-credential-card">
+        <div class="approach-team-credential-icon">
+          <svg data-element-type="icon" data-icon-type="svg" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <h4>רקע והכשרה</h4>
+        <p>בוגר ישיבות מובילות בארץ, בעל הסמכה רבנית מוכרת, ומנוסה בהדרכה אישית וקבוצתית. התמחות בהלכות טהרת המשפחה, תקשורת זוגית והכנה רגשית לחתונה.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="approach-team-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,0 L1200,0 L1200,80 L1198,75 Q1190,68 1182,72 Q1174,76 1166,70 Q1158,64 1150,68 Q1142,72 1134,66 Q1126,60 1118,64 Q1110,68 1102,62 Q1094,56 1086,60 Q1078,64 1070,58 Q1062,52 1054,56 Q1046,60 1038,54 Q1030,48 1022,52 Q1014,56 1006,50 Q998,44 990,48 Q982,52 974,46 Q966,40 958,44 Q950,48 942,42 Q934,36 926,40 Q918,44 910,38 Q902,32 894,36 Q886,40 878,34 Q870,28 862,32 Q854,36 846,30 Q838,24 830,28 Q822,32 814,26 Q806,20 798,24 Q790,28 782,22 Q774,16 766,20 Q758,24 750,18 Q742,12 734,16 Q726,20 718,14 Q710,8 702,12 Q694,16 686,10 Q678,4 670,8 Q662,12 654,6 Q646,0 638,4 Q630,8 622,2 L0,80 Z" fill="var(--bg-dark)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="approach-cta-section" data-layout-spec="Approach-cta">
+  <div class="approach-cta-container">
+    <div class="approach-cta-content">
+      <h2 class="approach-cta-title">אם אתה מעריך ודאות שקטה, התחל כאן</h2>
+      <p class="approach-cta-text">שלח הודעה פרטית ותקבל מענה מקצועי ומדויק. התהליך פשוט, דיסקרטי ומותאם אישית לצרכים שלך. אני כאן כדי להבטיח שתגיע לחופה עם ביטחון מלא.</p>
+      <div class="approach-cta-buttons">
+        <a href="/contact" class="btn-primary approach-cta-btn">צור קשר עכשיו</a>
+        <a href="/services" class="btn-secondary approach-cta-btn">צפה בשירותים</a>
+      </div>
+    </div>
+  </div>
+  <div class="approach-cta-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="approach-cta-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#232836;stop-opacity:1"></stop>
+          <stop offset="40%" style="stop-color:#F2F4F8;stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:#F2F4F8;stop-opacity:1"></stop>
+        </linearGradient>
+        <linearGradient id="approach-cta-gold-line" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#FFD166;stop-opacity:1"></stop>
+          <stop offset="60%" style="stop-color:#FFD166;stop-opacity:0.4"></stop>
+          <stop offset="100%" style="stop-color:#FFD166;stop-"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,100 L0,50 Q150,45 300,52 T600,48 Q750,52 900,45 T1200,50 L1200,100 Z" fill="url(#approach-cta-gradient)"></path>
+      <path d="M0,48 Q150,43 300,50 T600,46 Q750,50 900,43 T1200,48" fill="none" stroke="url(#approach-cta-gold-line)" stroke-width="2"></path>
+    </svg>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer"><div class="footer-container"><div class="footer-grid"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="הרב דוד בטאט" class="logo" /><p class="footer-description">שירותים דתיים והדרכה מקצועית עם ניסיון רב בליווי משפחות ויחידים בדרכם הרוחנית</p></div><div class="footer-column footer-links"><h3 class="footer-title">קישורים מהירים</h3><ul class="footer-nav"><li><a href="/services">שירותים</a></li><li><a href="/approach">גישה</a></li><li><a href="/contact">צור קשר</a></li></ul></div><div class="footer-column footer-contact"><h3 class="footer-title">יצירת קשר</h3><ul class="contact-list"><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div><div class="footer-column footer-social"><h3 class="footer-title">עקבו אחרינו</h3><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div></div><div class="footer-bottom"><div class="footer-legal"><a href="/privacy">מדיניות פרטיות</a><span class="separator">|</span><a href="/terms">תנאים והגבלות</a><span class="separator">|</span><a href="/accessibility">נגישות</a></div><div class="footer-copyright"><p>© 2026 הרב דוד בטאט. כל הזכויות שמורות.</p></div><div class="footer-attribution"><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></div></footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="/script.js"></script>
+
+    <div data-integration="accessibility:toolbar"></div>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body></html>
